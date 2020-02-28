@@ -4,7 +4,39 @@
   margin: 15rem 0;
 
   display: grid;                            // subgrid
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  //grid-template-columns: repeat(3, 1fr);2
   //grid-template-rows: auto auto;            // implicit grid will automatically define
   grid-gap: 6rem;
+
+  // the size of its content moved to the top
+  align-items: start;
+
+
+}
+
+.feature {
+
+  display: grid;
+  grid-template-columns: min-content 1fr;   // min-content for svg, and 1 fr for the text
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    grid-row: 1 / span 2;                     // for implicit grid
+    //grid-row: 1 / -1;                       // "-1" means the end of the explicit grid
+
+    // Fix - the icon is not moved to the top
+    transform: translateY(-1rem);
+  }
+
+  //but just the size of its content moved all the way to the top just as we specify at the grid container.
+
+  &__text {
+    font-size: 1.7rem;
+  }
 }

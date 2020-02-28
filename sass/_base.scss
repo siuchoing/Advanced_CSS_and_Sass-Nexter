@@ -32,4 +32,13 @@ body {
   color: $color-grey-dark-2;
   font-weight: 300;                           // based on link tag in html
   line-height: 1.6;
+
 }
+
+.container {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content); // 1st row 80vh height, 2nd row with min-content height,
+                                                                    // 3th row with 40vw height, the last 3 row with min-content height
+                                                                    // 40vw refer to 40% of the window's width which is 80% each row
+}
+

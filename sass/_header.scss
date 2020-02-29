@@ -8,9 +8,17 @@
   padding: 8rem;
   padding-top: 4rem;
 
+
+/***********************************************
+* original properties to cause content overflows
+* grid-template-columns: max-content;
+* grid-template-rows: 1fr min-content 6rem 1fr;
+* grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr;   // if min-content is greater than 6rem [max], the function is treated as max.
+ */
+  // Solved - all content overflows dur to fixed height
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr;      // If min-content is smaller than 6rem [max], the function is treated as min.
+  grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: 1.5rem;
   justify-content: center;
 
@@ -51,7 +59,10 @@
     align-items: center;
 
     img {
-      height: 2.5rem;
+      // Solved - all content overflows dur to fixed height
+      max-height: 2.5rem;                 // instead of height: 2.5rem;
+      max-width: 100%;
+
       filter: brightness(70%);
     }
   }

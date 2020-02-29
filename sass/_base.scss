@@ -14,9 +14,11 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
-$bp-largest: 75em;      //1200px/16px = 75em
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;      // 1200px/16px = 75em
 $bp-large: 62.5em;      // 1000px/16px = 62.5em
-
+$bp-medium: 50em;       // 800px/16px = 50em
+$bp-small: 37.5em;      // 600px/16 = 37.5em
 *,
 *::before,
 *::after {
@@ -71,5 +73,12 @@ body {
     grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start]
     minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];         // 1140px / 8 tracks = 14rem for fixed-width column
   }
+
+  @media only screen and (max-width: $bp-medium) {
+    // Add an row for realtors by add min-content height
+    // calc(100vh - 6rem) for when we start scrolling, the next section will appear
+    grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content min-content repeat(3, min-content);
+  }
+
 }
 
